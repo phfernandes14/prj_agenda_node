@@ -32,6 +32,8 @@
               <h4 class="text-center">Faça seu cadastro</h4>
               <p>Se você não possui conta , preenche o formulário abaixo:</p>
 
+              <%- include('includes/messages')%>
+
               <form action="/login/register" method="POST">
                 <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                 <div class="form-group">
