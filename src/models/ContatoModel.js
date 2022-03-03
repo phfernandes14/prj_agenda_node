@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const validator = require('validator')
 
 const ContatoSchema = new mongoose.Schema({
-  
-  nome:{type: String, required: true},
-  sobrenome:{type: String, required: false, default: ''},
-  email:{type: String, required: false, default: false},
-  telefone:{type: String, required: false, default:''},
-  criadoEm: {type: Date, default: Date.now}
+
+  nome: { type: String, required: true },
+  sobrenome: { type: String, required: false, default: '' },
+  email: { type: String, required: false, default: false },
+  telefone: { type: String, required: false, default: '' },
+  criadoEm: { type: Date, default: Date.now }
 
 
 
@@ -24,24 +24,38 @@ class Contato {
 
 
 
-   static async buscaPorId(id) {
+  async edit(id) {
     if (typeof id !== 'string') {
-        return
+      return
     } else {
-        const user = await ContatoModel.findById(id);
-        return user;
+      this.valida();
+      if (this.errors.length > 0) {
+        return
+      } else {
+        this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, {
+          new: true
+        })
+      }
+    }
+  }
+  static async buscaPorId(id) {
+    if (typeof id !== 'string') {
+      return
+    } else {
+      const user = await ContatoModel.findById(id);
+      return user;
     }
 
-}
+  }
 
-  async register(){
+  async register() {
     this.valida();
-    if(this.errors.length > 0 ){
+    if (this.errors.length > 0) {
       return
-    }else{
+    } else {
       this.contato = await ContatoModel.create(this.body)
-    } 
-   }
+    }
+  }
 
   //Método que valida dados req.body
   valida() {
@@ -60,7 +74,7 @@ class Contato {
       }
     }
 
-    
+
     //Filtra req.body
     this.body = {
       nome: this.body.nome,
@@ -69,10 +83,10 @@ class Contato {
       telefone: this.body.telefone
     }
   }
-  
 
 
-  
+
+
 }
 
 module.exports = Contato;
