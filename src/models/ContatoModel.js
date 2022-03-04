@@ -24,6 +24,7 @@ class Contato {
 
 
 
+
   async edit(id) {
     if (typeof id !== 'string') {
       return
@@ -83,6 +84,23 @@ class Contato {
       telefone: this.body.telefone
     }
   }
+
+
+  static async buscaContatos() {
+    const contatos = await ContatoModel.find().sort({criadoEm:-1})
+    return contatos;
+  }
+  
+  static async delete(id) {
+    if (typeof id !== 'string') {
+      return
+    } else {
+      const contato = await ContatoModel.findByIdAndDelete({_id: id})
+      return contato;
+    }
+    
+  }
+
 
 
 
