@@ -3,11 +3,12 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const conectaDb = require('./db')
 
-conectaDb.conexaoDb()
-
-
+//Conexão BD
+mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    app.emit('pronto');
+  });
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -17,7 +18,6 @@ const path = require('path');
 const helmet = require('helmet');
 const csrf = require('csurf');
 const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
-const req = require('express/lib/request');
 
 app.use(helmet());
 
@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'public')));
 
+//Config Session
 const sessionOptions = session({
   secret: 'akasdfj0út23453456+54qt23qv',
   store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
@@ -42,7 +43,8 @@ app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
 app.use(csrf());
-// Nossos próprios middlewares
+
+// Nossos Middlewares
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
 app.use(csrfMiddleware);

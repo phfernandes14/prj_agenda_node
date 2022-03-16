@@ -1,23 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Agenda Node</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand fw-bold mt-1" href="/">Agenda Node</a>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-           <% if(user) { %>
-            <li class="nav-item">
-                <a class="nav-link" href="/login/logout">Sair</a>
-            </li>
-            <% }else{%>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login/">Entrar</a>
+            <% if(user){ %>
+                <li class="nav-item fw-bold me-2 mt-1">
+                    <a class="btn btn-primary btn-sm fw-bold " href="/contato/"><i class="ti ti-file-text"></i> Novo Contato</a>
                 </li>
-            <% } %>
-            <li class="nav-item">
-                <a class="nav-link" href="/contato/">Cadastrar contato</a>
-            </li>
+                <% } %>
+                    <% if(user) { %>
+                        <li class="nav-item fw-bold mt-1">
+                            <a class="btn btn-danger btn-sm fw-bold" href="/login/logout">
+                                <i class="ti ti-arrow-bar-left"></i>
+                                
+                                
+                                
+                                Sair</a>
+                        </li>
+                        <% }else{%>
+                            <li class="nav-item fw-bold mt-1">
+                                <a class="btn btn-success btn-sm fw-bold" href="/login/">
+                                    <i class="ti ti-arrow-bar-right"></i>
+                                    Entrar</a>
+                            </li>
+                            <% } %>
         </ul>
     </div>
 </nav>

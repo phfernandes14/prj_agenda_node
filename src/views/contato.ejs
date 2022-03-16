@@ -1,62 +1,72 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<head>
+  <%- include('includes/head')%>
+  <title>Contato | Agenda - NodeJS</title>
+</head>
 
-    <title>Agenda</title>
-  </head>
-  <body>
+<body>
 
-    <!--Navbar-->
-    <%- include('includes/navbar')%>
+  <!--Navbar-->
+  <%- include('includes/navbar')%>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-2"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
         <div class="col-lg-8 my-3">
           <h1 class="text-center my-3">Criar Contato</h1>
-          <p class="text-center lead">Crie seus contatos abaixo</p>
+          <p class="text-center lead">Crie seus contatos abaixo ... </p>
+
+          <hr class="my-4">
+
           <%- include('includes/messages') %>
 
-          <% if(contato._id){%>
-            <form action="/contato/edit/<%=contato._id %>" method="POST">
-          <%} else{ %>
-            <form action="/contato/register" method="POST">
-            <% }%>
-              <input type="hidden" name="_csrf" value=<%= csrfToken %>>
-                <div class="form-group">
-                  <label>Nome</label>
-                  <input value="<%= contato.nome %>" type="text" class="form-control" placeholder="Digite o nome..." name="nome">
-                </div>
-                <div class="form-group">
-                    <label>Sobrenome</label>
-                    <input value="<%= contato.sobrenome %>" type="text" class="form-control" placeholder="Digite o sobrenome..." name="sobrenome">
-                </div> 
-                <div class="form-group">
-                    <label>Email</label>
-                    <input value="<%= contato.email %>" type="text" class="form-control" placeholder="Digite o email..." name="email">
-                </div>
-                <div class="form-group">
-                    <label>Telefone</label>
-                    <input value="<%= contato.telefone %>" type="tel" class="form-control" placeholder="Digite o telefone..." name="telefone">
-                </div>
-                    
-                <button type="submit" class="btn btn-primary mt-3">Criar conta !</button>
-              </form>
+            <% if(contato._id){%>
+              <form action="/contato/edit/<%=contato._id %>" method="POST">
+                <%} else{ %>
+                  <form action="/contato/register" method="POST">
+                    <% }%>
+                      <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+                      <div class="form-group">
+                        <label class="p-2 fw-bold">Nome</label>
+                        <input value="<%= contato.nome %>" type="text" class="form-control"
+                          placeholder="Digite o nome..." name="nome">
+                      </div>
+                      <div class="form-group">
+                        <label class="p-2 fw-bold">Sobrenome</label>
+                        <input value="<%= contato.sobrenome %>" type="text" class="form-control"
+                          placeholder="Digite o sobrenome..." name="sobrenome">
+                      </div>
+                      <div class="form-group">
+                        <label class="p-2 fw-bold">Email</label>
+                        <input value="<%= contato.email %>" type="text" class="form-control"
+                          placeholder="Digite o email..." name="email">
+                      </div>
+                      <div class="form-group">
+                        <label class="p-2 fw-bold">Telefone</label>
+                        <input value="<%= contato.telefone %>" type="tel" class="form-control"
+                          placeholder="Digite o telefone..." name="telefone">
+                      </div>
+                      <% if(contato._id){ %>
+                        <button type="submit" class="btn btn-primary fw-bold mt-3"><i class="ti ti-device-floppy"></i>
+                          Editar</button>
+                        <% }else{ %>
+                          <button type="submit" class="btn btn-success fw-bold mt-3"><i class="ti ti-checks"></i>
+                            Salvar</button>
+                          <% } %>
+                  </form>
         </div>
-        <div class="col-lg-2"></div>  
+        <div class="col-lg-2"></div>
+      </div>
     </div>
-  </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -65,5 +75,6 @@
     -->
     <!--Meu bundle-->
     <script src="./assets/js/bundle.js"></script>
-  </body>
+</body>
+
 </html>

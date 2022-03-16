@@ -3,7 +3,7 @@
         <div class="col">
             <div class="alert alert-danger">
                 <% errors.forEach(erro => { %>
-                    <%= erro %><br>
+                    <i class="ti ti-square-x fw-bold"></i> <%= erro %><br>
                 <%});%>
             </div>
         </div>
@@ -14,7 +14,7 @@
         <div class="col">
             <div class="alert alert-success">
                 <% success.forEach(success => { %>
-                    <%= success %><br>
+                    <i class="ti ti-check fw-bold"></i> <%= success %><br>
                 <%});%>
             </div>
         </div>

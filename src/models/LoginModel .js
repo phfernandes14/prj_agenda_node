@@ -17,7 +17,7 @@ class Login {
   }
 
   //Método para logar
-  async login(){
+  async login() {
     //Chama validaçõe de dados
     this.valida();
     //Retorna validações de dados
@@ -27,12 +27,12 @@ class Login {
 
     this.user = await LoginModel.findOne({ email: this.body.email })
 
-    if(!this.user){
+    if (!this.user) {
       this.errors.push('Usuário não existe.')
       return
     }
 
-    if(!bcryptjs.compareSync(this.body.password, this.user.password)){
+    if (!bcryptjs.compareSync(this.body.password, this.user.password)) {
       this.errors.push('Email ou senha invalidos')
     }
 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const validator = require('validator')
+const validator = require('validator');
 
 const ContatoSchema = new mongoose.Schema({
 
@@ -8,8 +8,6 @@ const ContatoSchema = new mongoose.Schema({
   email: { type: String, required: false, default: false },
   telefone: { type: String, required: false, default: '' },
   criadoEm: { type: Date, default: Date.now }
-
-
 
 });
 
@@ -20,10 +18,21 @@ class Contato {
     this.body = body;
     this.errors = [];
     this.contato = null;
-  }
+  };
 
+  static async buscaContatos() {
+    const contatos = await ContatoModel.find().sort({ criadoEm: -1 })
+    return contatos;
+  };
 
-
+  static async delete(id) {
+    if (typeof id !== 'string') {
+      return
+    } else {
+      const contato = await ContatoModel.findByIdAndDelete({ _id: id })
+      return contato;
+    }
+  };
 
   async edit(id) {
     if (typeof id !== 'string') {
@@ -85,26 +94,6 @@ class Contato {
     }
   }
 
-
-  static async buscaContatos() {
-    const contatos = await ContatoModel.find().sort({criadoEm:-1})
-    return contatos;
-  }
-  
-  static async delete(id) {
-    if (typeof id !== 'string') {
-      return
-    } else {
-      const contato = await ContatoModel.findByIdAndDelete({_id: id})
-      return contato;
-    }
-    
-  }
-
-
-
-
-
-}
+};
 
 module.exports = Contato;

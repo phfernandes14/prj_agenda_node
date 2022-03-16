@@ -1,0 +1,3 @@
+CONNECTIONSTRING= 'Cole sua string de conexão aqui';
+
+Renomeie o este arquivo para ".env"
