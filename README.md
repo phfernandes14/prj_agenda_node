@@ -13,7 +13,7 @@
 ## 💻 Sobre o projeto
 <p>
 Agenda NodeJS - Projeto tem o intuito de colocar em prática conceitos básico de desenvolvimento backend, utilizando NodeJS,
-ExpressJS e MongoDb, trata-se um agenda virtual para cadastrar contatos.
+ExpressJS e MongoDB, trata-se um agenda virtual para cadastrar contatos.
 </p>
 
 ---
@@ -29,10 +29,26 @@ ExpressJS e MongoDb, trata-se um agenda virtual para cadastrar contatos.
 
 ## 🎨 Layout
 
-<p>A agenda foi construida apenas para o ambiente web, que por sua vez foi contruida de maneira reponsiva.</p>
+<p>A agenda foi construida apenas para o ambiente web,e possui um design reponsivo.</p>
 
 ### Web
+##### ``Agenda``
+<img src="https://user-images.githubusercontent.com/50344535/158675213-d38d1d6b-732f-4455-b9f9-d267f4be12d9.png" style="display: inline-block;" width="600px" height="400px">
 
+##### ``Cadastro/Login``
+<img src="https://user-images.githubusercontent.com/50344535/158674951-72ea50c4-69db-4e4a-9163-4c945c6fa57d.png" style="display: inline-block;" width="600px" height="400px">
+
+##### ``Perfil``
+<img src="https://user-images.githubusercontent.com/50344535/158673675-ffe2bc83-c588-4b7b-bee4-111050128a41.png" width="600px" height="400px">
+
+##### ``Cadastrar Contato/Editar Contato``
+<img src="https://user-images.githubusercontent.com/50344535/158672736-1b88454f-dee1-478f-bacc-0da62f5e5b08.png" width="600px" height="400px">
+
+##### ``Apagar Contato``
+<img src="https://user-images.githubusercontent.com/50344535/158672304-2603ab15-524b-4c96-a45e-d8fa5b6fbacb.png" width="600px" height="400px">
+
+##### ``Responsividade``
+<img src="https://user-images.githubusercontent.com/50344535/158672086-1cb11ae2-5a60-41ba-a5a1-c571fe617bf0.png" width="300px" height="500px">
 
 ---
 
@@ -63,6 +79,12 @@ Exemplo: **CONNECTIONSTRING=mongodb+srv://***:***@***0.9sobg.mongodb.***/***?ret
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
+
+🔹 NodeJS<br>
+🔹 ExpressJS<br>
+🔹 MongoDB<br>
+🔹 EJS<br>
+🔸 Git
 
   
 ---
